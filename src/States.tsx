@@ -1,6 +1,11 @@
 import { atom, selector } from "recoil";
 import { RecoilAtomKeys, RecoilSelectorKeys } from "./RecoilKeys";
 
+export const nameState = atom<string>({
+  key: RecoilAtomKeys.NAME,
+  default: "",
+});
+
 export const targetIdState = atom<number>({
   key: RecoilAtomKeys.TARGET_ID,
   default: -1,

@@ -2,9 +2,12 @@ import axios from "axios";
 import QueryString from "qs";
 
 export const postAnswers = (
+  name: string,
   targetId: number,
   sampleImgs: number[],
   answers: number[],
+  clickedCount: number,
+  clickedImgs: number[],
   setHasSend: Function
 ) => {
   const url =
@@ -16,6 +19,7 @@ export const postAnswers = (
         action: "insert",
         sheetName: "human",
         date_time: new Date(),
+        name: name,
         target_ID: targetId,
         ID_of_image0: sampleImgs[0],
         score_of_image0: answers[0],
@@ -37,6 +41,8 @@ export const postAnswers = (
         score_of_image8: answers[8],
         ID_of_image9: sampleImgs[9],
         score_of_image9: answers[9],
+        clicked_count: clickedCount,
+        clicked_images: clickedImgs.join(","),
       })
     )
     .then((response) => {

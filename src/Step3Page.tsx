@@ -4,8 +4,10 @@ import All_data_list from "./all_data_list.json";
 import Filename_list from "./filename_list.json";
 import {
   answersState,
+  clickedCountState,
   clickedImgsState,
   hasSendState,
+  nameState,
   targetIdState,
 } from "./States";
 import { Console } from "console";
@@ -15,9 +17,11 @@ import { useEffect, useState } from "react";
 import { postAnswers } from "./connect";
 
 const Step3Page = () => {
+  const name = useRecoilValue(nameState);
   const clickedImgs = useRecoilValue(clickedImgsState);
   const answers = useRecoilValue(answersState);
   const targetId = useRecoilValue(targetIdState);
+  const clickedCount = useRecoilValue(clickedCountState);
   const setHasSend = useSetRecoilState(hasSendState);
   const [sampleImgs, setSampleImgs] = useState<number[]>([]);
   const [cards, setCards] = useState<JSX.Element[]>([]);
@@ -57,8 +61,16 @@ const Step3Page = () => {
       <ClickedImages />
       <Button
         onClick={() => {
-          window.confirm("OK?") &&
-            postAnswers(targetId, sampleImgs, answers, setHasSend);
+          window.confirm("解答を終了し、結果を送信してもよろしいですか？") &&
+            postAnswers(
+              name,
+              targetId,
+              sampleImgs,
+              answers,
+              clickedCount,
+              clickedImgs,
+              setHasSend
+            );
         }}
       >
         送信

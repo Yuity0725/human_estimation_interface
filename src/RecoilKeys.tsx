@@ -1,4 +1,5 @@
 export enum RecoilAtomKeys {
+  NAME = "name",
   TARGET_ID = "targetId",
   STEP = "step",
   COUNT = "count",

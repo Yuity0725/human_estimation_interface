@@ -25,7 +25,7 @@ const QuestionCard = ({
   const [answers, setAnswers] = useRecoilState(answersState);
   const hasSend = useRecoilValue(hasSendState);
   return (
-    <Card sx={{ maxWidth: 128, height: 240 }}>
+    <Card sx={{ maxWidth: 168, height: 240 }}>
       <CardMedia
         component={"img"}
         image={`${process.env.PUBLIC_URL}/dress_images/${filename}`}
