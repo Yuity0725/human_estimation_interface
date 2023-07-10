@@ -4,6 +4,7 @@ export enum RecoilAtomKeys {
   COUNT = "count",
   CLICKED_IMG_SET = "clickedImgSet",
   ANSWERS = "answers",
+  HAS_SEND = "hasSend",
 }
 
 export enum RecoilSelectorKeys {

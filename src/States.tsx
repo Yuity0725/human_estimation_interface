@@ -33,3 +33,8 @@ export const answersState = atom<number[]>({
   key: RecoilAtomKeys.ANSWERS,
   default: new Array(10).fill(-1),
 });
+
+export const hasSendState = atom<boolean>({
+  key: RecoilAtomKeys.HAS_SEND,
+  default: false,
+});

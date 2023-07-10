@@ -1,8 +1,13 @@
-import { useRecoilState, useRecoilValue } from "recoil";
+import { useRecoilState, useRecoilValue, useSetRecoilState } from "recoil";
 import ClickedImages from "./ClickedImages";
 import All_data_list from "./all_data_list.json";
 import Filename_list from "./filename_list.json";
-import { answersState, clickedImgsState, targetIdState } from "./States";
+import {
+  answersState,
+  clickedImgsState,
+  hasSendState,
+  targetIdState,
+} from "./States";
 import { Console } from "console";
 import QuestionCard from "./QuestionCard";
 import { Button, Grid } from "@mui/material";
@@ -13,6 +18,7 @@ const Step3Page = () => {
   const clickedImgs = useRecoilValue(clickedImgsState);
   const answers = useRecoilValue(answersState);
   const targetId = useRecoilValue(targetIdState);
+  const setHasSend = useSetRecoilState(hasSendState);
   const [sampleImgs, setSampleImgs] = useState<number[]>([]);
   const [cards, setCards] = useState<JSX.Element[]>([]);
   useEffect(() => {
@@ -36,6 +42,7 @@ const Step3Page = () => {
           imgIndex={imgIndex}
           filename={Filename_list[imgIndex]}
           cardId={cardId}
+          correctAnswer={All_data_list[targetId][imgIndex]}
         />
       );
     });
@@ -50,7 +57,8 @@ const Step3Page = () => {
       <ClickedImages />
       <Button
         onClick={() => {
-          window.confirm("OK?") && postAnswers(targetId, sampleImgs, answers);
+          window.confirm("OK?") &&
+            postAnswers(targetId, sampleImgs, answers, setHasSend);
         }}
       >
         送信
