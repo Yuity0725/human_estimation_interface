@@ -15,6 +15,7 @@ import QuestionCard from "./QuestionCard";
 import { Button, Grid } from "@mui/material";
 import { useEffect, useState } from "react";
 import { postAnswers } from "./connect";
+import ModalDialog from "./ModalDialog";
 
 const Step3Page = () => {
   const name = useRecoilValue(nameState);
@@ -22,7 +23,7 @@ const Step3Page = () => {
   const answers = useRecoilValue(answersState);
   const targetId = useRecoilValue(targetIdState);
   const clickedCount = useRecoilValue(clickedCountState);
-  const setHasSend = useSetRecoilState(hasSendState);
+  const [hasSend, setHasSend] = useRecoilState(hasSendState);
   const [sampleImgs, setSampleImgs] = useState<number[]>([]);
   const [cards, setCards] = useState<JSX.Element[]>([]);
   useEffect(() => {
@@ -58,23 +59,26 @@ const Step3Page = () => {
       <Grid container spacing={3}>
         {cards}
       </Grid>
+      <ModalDialog />
       <ClickedImages />
-      <Button
-        onClick={() => {
-          window.confirm("解答を終了し、結果を送信してもよろしいですか？") &&
-            postAnswers(
-              name,
-              targetId,
-              sampleImgs,
-              answers,
-              clickedCount,
-              clickedImgs,
-              setHasSend
-            );
-        }}
-      >
-        送信
-      </Button>
+      {!hasSend && (
+        <Button
+          onClick={() => {
+            window.confirm("解答を終了し、結果を送信してもよろしいですか？") &&
+              postAnswers(
+                name,
+                targetId,
+                sampleImgs,
+                answers,
+                clickedCount,
+                clickedImgs,
+                setHasSend
+              );
+          }}
+        >
+          送信
+        </Button>
+      )}
     </>
   );
 };

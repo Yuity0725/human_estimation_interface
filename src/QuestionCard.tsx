@@ -1,6 +1,7 @@
 import {
   Button,
   Card,
+  CardActionArea,
   CardActions,
   CardContent,
   CardMedia,
@@ -10,6 +11,7 @@ import {
 import { useRecoilState, useRecoilValue } from "recoil";
 import { answersState, hasSendState } from "./States";
 import All_data_list from "./all_data_list.json";
+import ActionCardMedia from "./ActionCardMedia";
 
 const QuestionCard = ({
   imgIndex,
@@ -26,11 +28,7 @@ const QuestionCard = ({
   const hasSend = useRecoilValue(hasSendState);
   return (
     <Card sx={{ maxWidth: 168, height: 240 }}>
-      <CardMedia
-        component={"img"}
-        image={`${process.env.PUBLIC_URL}/dress_images/${filename}`}
-        sx={{ maxWidth: "100%", height: 180 }}
-      />
+      <ActionCardMedia filename={filename} />
       {hasSend ? (
         <CardContent>
           <Typography>解答: {answers[cardId]}</Typography>

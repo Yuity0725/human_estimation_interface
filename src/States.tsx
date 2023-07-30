@@ -21,6 +21,16 @@ export const countState = atom<number>({
   default: 0,
 });
 
+export const continuousClickCountState = atom<number>({
+  key: RecoilAtomKeys.CONTINUOUS_CLICK_COUNT,
+  default: 0,
+});
+
+export const recentClickedImgState = atom<string>({
+  key: RecoilAtomKeys.RECENT_CLICKED_IMG,
+  default: undefined,
+});
+
 export const clickedImgsState = atom<number[]>({
   key: RecoilAtomKeys.CLICKED_IMG_SET,
   default: [],
@@ -41,5 +51,15 @@ export const answersState = atom<number[]>({
 
 export const hasSendState = atom<boolean>({
   key: RecoilAtomKeys.HAS_SEND,
+  default: false,
+});
+
+export const modalImgState = atom<string>({
+  key: RecoilAtomKeys.MODAL_IMG,
+  default: undefined,
+});
+
+export const dialogIsOpenState = atom<boolean>({
+  key: RecoilAtomKeys.DIALOG_IS_OPEN,
   default: false,
 });

@@ -3,6 +3,7 @@ import ClickedImages from "./ClickedImages";
 import PreferenceTable from "./PreferenceTable";
 import { useSetRecoilState } from "recoil";
 import { stepState } from "./States";
+import ModalDialog from "./ModalDialog";
 
 const Step2Page = () => {
   const setStep = useSetRecoilState(stepState);
@@ -11,6 +12,7 @@ const Step2Page = () => {
       <h2>ある人物の好みを当ててください</h2>
       <ClickedImages />
       <PreferenceTable />
+      <ModalDialog />
       <Button
         onClick={() => {
           window.confirm(
