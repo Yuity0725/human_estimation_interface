@@ -17,8 +17,9 @@ const Step2Page = () => {
         onClick={() => {
           window.confirm(
             "「OK」を押すとこのページには戻れません。本当によろしいですか?"
-          ) && setStep(2);
+          ) && setStep(3);
         }}
+        variant="outlined"
       >
         次へ
       </Button>

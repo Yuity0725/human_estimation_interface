@@ -3,7 +3,7 @@ import { nameState, stepState, targetIdState } from "./States";
 import { Button, Grid, TextField } from "@mui/material";
 
 const Step1Page = () => {
-  const setName = useSetRecoilState(nameState);
+  const [name, setName] = useRecoilState(nameState);
   const [id, setId] = useRecoilState(targetIdState);
   const setStep = useSetRecoilState(stepState);
   return (
@@ -27,9 +27,11 @@ const Step1Page = () => {
       <Grid>
         <Button
           onClick={() => {
-            id >= 0 && id <= 646
-              ? setStep(1)
-              : alert("0~646の数を入力してください");
+            const message: string[] = new Array();
+            name == "" && message.push("名前を入力してください");
+            (id < 0 || id >= 646) &&
+              message.push("0~646の数を入力してください");
+            message.length == 0 ? setStep(2) : alert(message.join("\n"));
           }}
           variant="outlined"
           size="medium"

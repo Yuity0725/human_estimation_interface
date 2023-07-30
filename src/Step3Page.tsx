@@ -75,6 +75,7 @@ const Step3Page = () => {
                 setHasSend
               );
           }}
+          variant="outlined"
         >
           送信
         </Button>
