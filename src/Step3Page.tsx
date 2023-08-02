@@ -43,19 +43,27 @@ const Step3Page = () => {
     setSampleImgs(sampleImgs);
     const cards = sampleImgs.map((imgIndex, cardId) => {
       return (
-        <QuestionCard
-          imgIndex={imgIndex}
-          filename={Filename_list[imgIndex]}
-          cardId={cardId}
-          correctAnswer={All_data_list[targetId][imgIndex]}
-        />
+        <Grid item xs={1}>
+          <QuestionCard
+            imgIndex={imgIndex}
+            filename={Filename_list[imgIndex]}
+            cardId={cardId}
+            correctAnswer={All_data_list[targetId][imgIndex]}
+          />
+        </Grid>
       );
     });
     setCards(cards);
   }, []);
   return (
     <>
-      <h2>表示された服の点数を推測してください</h2>
+      <Grid>
+        <h2>表示された服の点数を推測してください</h2>
+        <ul>
+          <li>画像の下の入力欄に0〜10で点数を入力してください。</li>
+          <li>画像をクリックすると拡大表示されます。</li>
+        </ul>
+      </Grid>
       <Grid container spacing={3}>
         {cards}
       </Grid>

@@ -80,6 +80,7 @@ const PreferenceCard = ({
         <CardActions>
           <Button
             size="small"
+            variant="outlined"
             onClick={() => {
               count <= continuousClickCount
                 ? addClickedImg()
